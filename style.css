@@ -1,0 +1,472 @@
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+html {
+  width:  100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Silkscreen', cursive;
+  font-size: 36px;
+} 
+
+body {
+    width:  100%;
+    height: 100%;
+    margin: 0;
+    /* background-color: black; */
+    background: radial-gradient(circle at bottom, navy 0, black 100%);
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(4, 1fr);
+}
+
+header {
+  background-color: #999999;
+  color: lime;
+  text-align: center;
+  margin: 0;
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bomba {
+  width: 85px;
+  height: 85px;
+  margin: 5px 40px;
+}
+
+h1 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0 auto;
+  color: red;
+}
+
+.monitor {
+  background-color: #555555;
+  padding: 0 15px;
+  border-radius: 25px;
+  font-size: 32px;
+  margin: 15px;
+}
+
+.blink {
+  background-color: yellow;
+  width: auto;
+  margin-top: 15%;
+  border-radius: 100%;
+  padding: 30px;
+}
+
+#extra {
+  animation: blink 0.5s linear infinite;
+  font-size: 80px;
+}
+
+@keyframes blink {
+  0%{opacity: 0;}
+  50%{opacity: .5;}
+  100%{opacity: 1;}
+  }
+
+main {
+  grid-column: 2 / span 3;
+  grid-row: 2 / span 8;
+  position: relative;
+  background: radial-gradient(circle at bottom, navy 0, black 100%);
+}
+
+.cursor {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+   
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  z-index: 5;
+}
+
+@keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+
+@keyframes move-clouds-back {
+  from {background-position:0 0;}
+  to {background-position:10000px 0;}
+}
+
+.stars, .twinkling, .clouds {
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+width:100%;
+height:100%;
+display:block;
+}
+
+.stars {
+background:#000 url(./images/background/stars.png) repeat top center;
+z-index:0;
+}
+
+.twinkling {
+background:transparent url(./images/background/twinkling.png) repeat top center;
+z-index:1;
+animation:move-twink-back 200s linear infinite;
+}
+
+.clouds {
+  background:transparent url(./images/background/clouds.png) repeat top center;
+  z-index:2;
+  opacity: .4;
+  animation:move-clouds-back 200s linear infinite;
+}
+
+nav {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 8;
+  position: relative;
+  background-color: #777777;
+  z-index: 4;
+  text-align: center;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#board {
+  height: 220px;
+  width: 80%;
+  display: block;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+}
+
+#slider {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+}
+
+img {
+  height: 50%;
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+#kapitan {
+  position: fixed;
+  width: 271px;
+  height: 486px;
+  left: 57vw;
+  bottom: 25vh;
+}
+
+#skull {
+  position: fixed;
+  width: 214px;
+  height: 300px;
+  left: 62.5vw;
+  bottom: 35vh;
+  transform: translate(-50%, -50%);
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  font-family: 'Silkscreen', cursive;
+  margin-top: 40%;
+  min-width: 300px;
+  min-height: 60px;
+  font-size: 22px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+button::before {
+  content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+button:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+button:hover::after, button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+footer {
+  background-color: #555555;
+  color: lime;
+  grid-column: 1 / span 4;
+  grid-row: 10 / span 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#clockdate {
+  display: block;
+  text-align: right;
+  margin: 0 50px;
+}
+
+canvas {
+    position: absolute;
+    display: block;
+    z-index: 4;
+    /* background-color: white; */
+    padding: 0;
+}
+
+#collisionCanvas {
+  opacity: 0;
+}
+
+@media screen and (max-width: 1300px) and (max-height: 900px) and (orientation: landscape){
+  h1{
+    font-size: 40px;
+  }
+  #bomba {
+    width: 60px;
+    height: 60px;
+    margin: 5px 40px
+  }
+
+  #kapitan {
+    left: 51vw;
+    bottom: 20vh;
+  }
+
+  #skull {
+    left: 62.5vw;
+    bottom: 30vh;
+  }
+
+  .cursor {
+    width: 80px;
+    height: 80px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  #board {
+    height: 200px;
+  }
+
+  .blink {
+    margin-top: 20%;
+    padding: 20px;
+  }
+
+  .button {
+    min-width: 240px;
+    min-height: 50px;
+  }
+
+  button::before {
+    min-width: calc(240px + 12px);
+    min-height: calc(50px + 12px);
+  }
+
+  #clockdate {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 1000px) and (max-height: 500px) and (orientation: landscape){
+  body {
+    grid-template: repeat(1, 1fr) / repeat(4, 1fr);
+  }
+
+  header {
+    grid-column: 0;
+    grid-row: 0;
+    display: none;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  #bomba{
+    width: 25px;
+    height: 25px;
+    margin: 5px 40px
+  }
+
+  #kapitan {
+    width: 135px;
+    height: 243px;
+    left: 54vw;
+    bottom: 18vh;
+  }
+
+  #skull {
+    width: 121px;
+    height: 170px;
+    left: 62.5vw;
+    bottom: 27vh;
+  }
+
+  nav {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 9;
+    padding-top: 5px;
+  }
+
+  main {
+    grid-column: 2 / span 3;
+    grid-row: 1 / span 10;
+    position: relative;
+    background: radial-gradient(circle at bottom, navy 0, black 100%);
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  .cursor {
+    width: 60px;
+    height: 60px;
+  }
+
+  #board{
+    height: 110px;
+  }
+
+  .blink{
+    margin-top: 7%;
+    padding: 5px;
+  }
+
+  .monitor{
+    margin: 10px;
+  }
+
+  #extra{
+    font-size: 30px;
+  }
+
+  .button{
+    min-width: 170px;
+    min-height: 40px;
+    font-size: 16px;
+    margin-top: 20%;
+  }
+
+  button::before{
+    min-width: calc(170px + 12px);
+    min-height: calc(40px + 12px);
+  }
+
+  @keyframes ring {
+    0% {
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+    }
+    100% {
+      width: 200px;
+      height: 200px;
+      opacity: 0;
+    }
+  }
+
+  #clockdate{
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  #text{
+    display: none;
+  }
+
+  footer {
+    background-color: #555555;
+    color: lime;
+    grid-column: 1 / span 1;
+    grid-row: 10 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
